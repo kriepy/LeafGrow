@@ -9,9 +9,7 @@ Install the dependencies with
 
 Run the program with
 
-    jupyter notebook
-
-Go to localhost:8888 and start the notebook und execute the code.
+    python main
 
 ## Prerequisites:
 
