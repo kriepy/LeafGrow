@@ -3,26 +3,23 @@
 A visualisation on leaf grow
 
 ## Quickstart
-Install the dependencies with
 
-    pip install -r requirements.txt
+Before you start create a virtual environment and install all dependencies.
 
-Run the program with
+To see an example of an animation run:
 
-    python main
+    python animation.py
 
-## Prerequisites:
+To see the outline of a leaf run:
 
-I use a virtual environment which is explained in the following [heading](#create-a-virtual-env). But you can also install everything manually. 
-
-- python 3.6
-
-Add new dependencies with
-
-    pip freeze > requirements.txt
+    python path.py
 
 
-## Create a virtual env
+## Before you start
+
+I use a virtual environment so that the dependencies do not mess with dependencies from other projects.
+
+### Create a virtual env
 
 This will create a virtualenv with the python3.6 version and starts it directly.
 
@@ -31,3 +28,14 @@ This will create a virtualenv with the python3.6 version and starts it directly.
 Start the env with
 
     workon LeafGrow
+
+### Install dependencies
+
+
+Install the dependencies with
+
+    pip install -r requirements.txt
+
+To add new dependencies install them with 'pip' and then run:
+
+    pip freeze > requirements.txt
