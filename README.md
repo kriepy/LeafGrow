@@ -8,11 +8,11 @@ Before you start create a virtual environment and install all dependencies.
 
 To see an example of an animation run:
 
-    python animation.py
+    python tests/leaf_grow_animation.py
 
-To see the outline of a leaf run:
+To see the leaf with the auxin an vein nodes run:
 
-    python path.py
+    python tests/path.py
 
 
 ## Before you start
