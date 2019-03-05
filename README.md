@@ -1,6 +1,6 @@
 # Leaf Grow
 
-A visualisation on leaf grow
+A visualisation on leaf grow. See this [paper](http://algorithmicbotany.org/papers/venation.sig2005.pdf)
 
 ## Quickstart
 
