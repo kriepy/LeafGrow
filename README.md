@@ -6,13 +6,9 @@ A visualisation on leaf grow. See this [paper](http://algorithmicbotany.org/pape
 
 Before you start create a virtual environment and install all dependencies.
 
-To see an example of an animation run:
+To see the leaf growth animation run:
 
-    python tests/leaf_grow_animation.py
-
-To see the leaf with the auxin an vein nodes run:
-
-    python tests/path.py
+    python src/main.py
 
 
 ## Before you start
