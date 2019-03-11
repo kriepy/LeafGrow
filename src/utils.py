@@ -1,3 +1,4 @@
+import random
 import numpy as np
 import networkx as nx
 
@@ -10,26 +11,35 @@ def minimum_index(arr):
     indices = np.where(a == a.min())
     return indices[0][0]
 
-def get_new_vein_nodes(xv, yv, xa, ya, G):
-    """Returns a list of new vein nodes given the previouse vein and the auxin nodes"""
+def get_auxin_nodes(ymin, ymax, xvari, nr, path):
+    """Returns a list of random points within the given path
+    nr - is the number of points to return
+    """
+    
+    auxin_list = []
 
-    # make numpy arrays of vein- and auxin-nodes 
-    v = []
-    for vi in range(len(xv)):
-        v.append(np.array((xv[vi], yv[vi])))
-    a = []
-    for ai in range(len(xa)):
-        a.append(np.array((xa[ai], ya[ai])))
+    for _ in range(0,nr):
+        x = random.normalvariate(0,xvari)
+        y = random.uniform(ymin,ymax)
+        while(not path.contains_point([x,y])):
+            x = random.normalvariate(0,xvari)
+            y = random.uniform(ymin,ymax)
 
-    # calculate new vein nodes
+        auxin_list.append((x,y))
+    return np.array(auxin_list)
+
+def get_new_vein_nodes(v, a, G):
+    """Returns the graph object with new vein nodes given the previouse vein and the auxin nodes"""
+
+    # ---------calculate new vein nodes--------------------------
 
     # create an array of zeros (vein nodes normalized)
     vnn = [np.zeros(2) for _ in range(len(v))]
 
     # Foreach auxin node find the closest vein node
-    for ai in range(len(xa)):
+    for ai in range(len(a)):
         dist = []
-        for vi in range(len(xv)):
+        for vi in range(len(v)):
             dist.append(euclidean_distance(a[ai], v[vi]))
 
         # get the index for the closest vein node
@@ -44,10 +54,9 @@ def get_new_vein_nodes(xv, yv, xa, ya, G):
     vein_node_index = len(G)
     for vi in range(len(v)):
         if vnn[vi].any():
-            new_vein_nodes.append(v[vi] + vnn[vi])
+            new_vein_nodes.append((v[vi] + vnn[vi]).tolist())
             G.add_node(vein_node_index, pos=(v[vi] + vnn[vi]))
             G.add_edge(vi,vein_node_index)   
             vein_node_index += 1
     
-
-    return G
+    return G, new_vein_nodes
