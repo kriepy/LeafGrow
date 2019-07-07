@@ -35,3 +35,14 @@ Install the dependencies with
 To add new dependencies install them with 'pip' and then run:
 
     pip freeze > requirements.txt
+
+## Things that need to be done
+
+- let leaf grow bigger
+- let leaf grow depend on steps
+- implement vein node width
+- use a more natural leaf shape as outline
+- tweaking parameters so that the grow looks more naturally
+    - number of nodes
+    - start with a smaller leaf
+    - use 100 steps

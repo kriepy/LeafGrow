@@ -5,13 +5,13 @@ import networkx as nx
 def euclidean_distance(v1,v2):
     return np.linalg.norm(v1-v2)
 
-# returns the index of the array that has the smallest value in the array
 def minimum_index(arr):
+    '''Returns the index of the array that has the smallest value in the array''' 
     a = np.array(arr)
     indices = np.where(a == a.min())
     return indices[0][0]
 
-def get_auxin_nodes(ymin, ymax, xvari, nr, path):
+def get_auxin_nodes(ymin, ymax, xmin, xmax, nr, path):
     """Returns a list of random points within the given path
     nr - is the number of points to return
     """
@@ -19,16 +19,16 @@ def get_auxin_nodes(ymin, ymax, xvari, nr, path):
     auxin_list = []
 
     for _ in range(0,nr):
-        x = random.normalvariate(0,xvari)
+        x = random.uniform(xmin,xmax)
         y = random.uniform(ymin,ymax)
         while(not path.contains_point([x,y])):
-            x = random.normalvariate(0,xvari)
+            x = random.uniform(xmin,xmax)
             y = random.uniform(ymin,ymax)
 
         auxin_list.append((x,y))
     return np.array(auxin_list)
 
-def get_new_vein_nodes(v, a, G):
+def get_new_graph_and_vein_nodes(v, a, G):
     """Returns the graph object with new vein nodes given the previouse vein and the auxin nodes"""
 
     # ---------calculate new vein nodes--------------------------
